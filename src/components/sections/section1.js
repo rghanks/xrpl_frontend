@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { useWeb3ModalProvider, useWeb3ModalAccount } from '@web3modal/ethers/react'
 import {URL} from '../../utils/constants'
+import axios from 'axios'
 
-const Section1 = ({data}) => {
+const Section1 = ({ data }) => {
     const { address, isConnected } = useWeb3ModalAccount() 
-    // const [data, setData] = useEffect();
-
-    // useEffect(()=>{
-    //     console.log('callled...')
-    //     fetch(`${URL}/user?id=${address}`)
-    //         .then( (res) => {
-    //             return res.json();
-    //           })
-    //         .then((user) => {
-    //               setData(user);                
-    //          }).catch((e)=>{             
-    //           console.log("User not exist!!!")
-    //         }) 
-    //  })
+    // const [data, setData] = useState();
+    
+    // const getUser = async() =>{
+    //     const response = await axios.get(`${URL}/user?id=${address}`);
+    //     if(response){
+    //          setData(response.data);
+    //       }
+    //     }
+      
+    //   useEffect(() =>{
+    //         getUser(); 
+    //   },[])
 
   return (
     <>
       
-    <section class="services" style={{marginTop:"100px"}} >
+    <section class="services"  >
+
+    
+
+
         <div class="container text-center">
             <div class="services__title">
                 <div class="section-title">
@@ -31,10 +34,10 @@ const Section1 = ({data}) => {
                         <i class="fa-solid fa-chevron-down"></i>
                     </a>
                 </div>
-                <p>
+                {/* <p>
                   <img src="img/new/about_1.png" alt="" />
-                </p>
-                <a href="#learn" class="primary-btn">Learn More About XRPL</a> 
+                </p> */}
+                {/* <a href="#learn" class="primary-btn">Learn More About XRPL</a>  */}
             </div>
             <div class="div-collapse">
                 <div class="row align-items-center">
@@ -84,7 +87,7 @@ const Section1 = ({data}) => {
                                                 <div class="level-item__title title title--grad mb-0">My Referral Link</div>
                                                 <div class="level__inner pb-4 pt-3">
                                                     <input type="hidden" id="refaddress" value="indexa0c0.html?ref=0x0000000000000000000000000000000000000000" />
-                                                    <div class="level-item__digit title" id="spanreferralkey" onclick="copyToClipboard()" ondblclick="copyToClipboard()">https://dapp.metaomatic.in?ref=0x</div>
+                                                    <div class="level-item__digit title" id="spanreferralkey" onclick="copyToClipboard()" ondblclick="copyToClipboard()">https://app.xrpl.team?id=0x</div>
                                                     <h6 class="level-item__digit title" id="spancopiedmessage" style={{color: "#ffff", position: "absolute", display:"none", left: 0, right: 0, margin: "auto", bottom: "10px", background: "#d1a926", width: "220px", padding: "5px 0" }}></h6>
                                                 </div>
                                                 <div class="bordered__border bordered__border--left"></div>
@@ -105,7 +108,7 @@ const Section1 = ({data}) => {
                             <div class="col-lg-6 col-md-4 col-sm-6 text-center">
                                 <div class="level-item bordered mb-4 mt-xl-3">
                                     <div class="bordered__inner bordered--double_angled bordered--bg_top">
-                                        <div class="level-item__title title title--grad mb-0">Total Earning</div>
+                                        <div class="level-item__title title title--grad mb-0">Profits</div>
                                         <div class="level__inner pb-4 pt-3">
                                             <div class="level-item__digit title" id="spanavailablematic"> { data ? data[0]?.wallet_amount : 0.0000 } </div>
                                         </div>
@@ -121,9 +124,9 @@ const Section1 = ({data}) => {
                             <div class="col-lg-6 col-md-4 col-sm-6 text-center">
                                 <div class="level-item bordered mb-4 mt-xl-3">
                                     <div class="bordered__inner bordered--double_angled bordered--bg_top">
-                                        <div class="level-item__title title title--grad mb-0">Total Investment</div>
+                                        <div class="level-item__title title title--grad mb-0">Partners</div>
                                         <div class="level__inner pb-4 pt-3">
-                                            <div class="level-item__digit title" id="spanmyinvestment"> { data ? data[0]?.topup_amount : 0.0000 } </div>
+                                            <div class="level-item__digit title" id="spanmyinvestment"> { data ? data[0]?.total_direct : 0 } </div>
                                         </div>
                                         <div class="bordered__border bordered__border--left"></div>
                                         <div class="bordered__border bordered__border--right"></div>
@@ -136,6 +139,9 @@ const Section1 = ({data}) => {
                             </div>
                         </div>
                     </div>
+
+                 
+
                 </div>
             </div>
         </div>

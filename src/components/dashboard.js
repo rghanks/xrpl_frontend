@@ -9,6 +9,7 @@ import Section5 from './sections/section5'
 import Preloader from './inc/preloder'
 import {  useWeb3ModalAccount, useDisconnect } from '@web3modal/ethers/react'
 import { URL } from '../utils/constants'
+import Profile from './sections/profile'
 
 
 const Dashboard = () => {
@@ -16,7 +17,7 @@ const Dashboard = () => {
   const [isExits, setIsExits] = useState(false);
   const [user, setUser] = useState();
 
-
+  
   useEffect(() =>{
     //  console.log(isConnected,address);
         if(isConnected && !isExits){
@@ -37,11 +38,13 @@ const Dashboard = () => {
             console.log('Not Connected')
         }
   
-  })
+  },[address,isConnected])
      // console.log(address,isExits)
-     window.ethereum.on('accountsChanged', function () {
-      setIsExits(false);
-     })
+     if (window.ethereum) {
+          window.ethereum.on('accountsChanged', function () {
+              setIsExits(false);
+          })
+    }
 
     
 
@@ -52,8 +55,10 @@ const Dashboard = () => {
 
       { (isExits && isConnected) ?  
           <>
-           <Section1 data={user} /> 
+           <Profile data={user} />
+           {/* <Section1 data={user} />  */}
            <Section2 /> 
+           <Section4 />
           </>  
           :
           <Section5 />            

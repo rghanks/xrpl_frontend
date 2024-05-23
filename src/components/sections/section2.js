@@ -71,22 +71,16 @@ const Section2 = () => {
   return String(x);
   }
    
+  const upackages = async() =>{
+    const response = await axios.get(`${URL}/packages?address=${address}`);
+    if(response){
+        setUpgraded_plan(response.data);
+    }
+  }
 
   useEffect(()=>{
-      // All Packages-------------------
-      fetch(`${URL}/packages?address=${address}`)
-      .then((res) => {
-          return res.json();
-        })
-      .then((packages) => {                      
-        setUpgraded_plan(packages);
-      }).catch((e)=>{
-        console.log("error:",e);
-      })
-
-  })
-
-  //console.log(upgraded_plan);
+    upackages();
+  },[])
 
   return (
     <>

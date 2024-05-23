@@ -6,20 +6,24 @@ import { useWeb3ModalProvider, useWeb3ModalAccount } from '@web3modal/ethers/rea
 import { URL } from '../../utils/constants';
 
 const Section5 = () => {
-
+    const params = new URLSearchParams(window.location.search);
+    const sp_id = params.get("id");
+    
     const { address, isConnected } = useWeb3ModalAccount()
     const { walletProvider } = useWeb3ModalProvider();
-    const [sponsor_id, set_sponsor_id] = useState("")
+    const [sponsor_id, set_sponsor_id] = useState(sp_id)
     const [plan_amt, set_plan_amt] = useState(10);
     const [hashcode, setHashcode] = useState("");
-
+    
     const formData = new FormData();  
     formData.append('wallet_address', address); 
     formData.append('sponsor_id', sponsor_id); 
     formData.append('plan_amt', plan_amt); 
-    formData.append('hashcode', hashcode); 
+    
+    // console.log(sponsor_id);
   
     const ApproveAndTransfer =  async() => {
+        
           const web3              = new Web3(walletProvider || "http://localhost:8545");
           const contract         = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
           const token_contract   = new web3.eth.Contract(TOKEN_ABI, TOKEN_ADDRESS);
@@ -33,6 +37,7 @@ const Section5 = () => {
             // All signup code......
             const Hashcode =  d.transactionHash.toString(); 
             setHashcode(Hashcode);
+            formData.append('hashcode', Hashcode); 
 
             axios.post(`${URL}/signup`, formData)
                 .then((response) => {
@@ -67,9 +72,9 @@ const Section5 = () => {
   }
   
   //console.log(sponsor_id);
-  function handleChange(event) {
-    set_sponsor_id(event.target.value);
-  }
+//   function handleChange(event) {
+//     set_sponsor_id(event.target.value);
+//   }
  
   return (
     <>
@@ -85,8 +90,8 @@ const Section5 = () => {
                            placeholder="Sponsor User Id" 
                            id="txtviewuserid" 
                            class="form-control bg-white"
-                           value={sponsor_id}
-                           onChange={handleChange}
+                           value={ sp_id ? sp_id : sponsor_id}
+                           onChange={(e) => set_sponsor_id(e.target.value)}
                            />
                     <ul class="matic-ul">
                         <li>

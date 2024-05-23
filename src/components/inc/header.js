@@ -24,12 +24,12 @@ const Header = () => {
                     <div class="header__nav__option">
                         <nav class="header__nav__menu mobile-menu">
                             <ul>
-                                <li class="active">
+                                {/* <li class="active">
                                     <a href="/">Home</a>
                                 </li>
                                 <li>
                                     <a href="/" target="_blank">Smart Contract</a>
-                                </li>
+                                </li> */}
                                 {/* <li class="nav-item">
                                     <a href="community.html" class="btn btn-sm btn-primary ml-2 c-btn">
                                         Community
@@ -51,9 +51,9 @@ const Header = () => {
 
                                     <w3m-button />
                                 </li>
-                                <li>
+                                {/* <li>
                                     <div id="google_translate_element"></div>
-                                </li>
+                                </li> */}
                             </ul>
                         </nav>
                     </div>

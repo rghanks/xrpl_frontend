@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import {URL} from '../../utils/constants'
+import {  useWeb3ModalAccount, useDisconnect } from '@web3modal/ethers/react'
 
-const Section4 = () => {     
+const Section4 = () => {  
+    const { address, isConnected } = useWeb3ModalAccount()   
     const [data, setData] = useState([]);
 
     useEffect(() => {
-      fetch(`${URL}/transactions`)
+      fetch(`${URL}/transactions?id=${address}`)
         .then((res) => {
           return res.json();
         })
@@ -21,7 +23,7 @@ const Section4 = () => {
             <div class="col-md-12 text-center">
                 <div class="services__title">
                     <div class="section-title">
-                        <h2>Recent Transactions</h2>
+                        <h2>History</h2>
                         <br />
                     </div>
                     {/* <p>
