@@ -9,8 +9,9 @@ const Profile = ({ data }) => {
             <div class="section-title text-center">
                 <span>Welcome!!!</span>
                 <h2>User Id : <b id="spanuserid">{ data ? data[0]?.member_user_id : "" }</b>  </h2> 
-                <a class="btn btn-warning bg-warning" onClick={() => {navigator.clipboard.writeText(`${window.location.href}?id=${data[0].member_user_id}`)}}>Copy Referral Link</a>
+                {/* <a class="btn btn-warning bg-warning" onClick={() => {navigator.clipboard.writeText(`${window.location.href}?id=${data[0].member_user_id}`)}}>Copy Referral Link</a> */}
             </div>
+            <br />
         </div>
         <div class="container ">
             <div class="row">

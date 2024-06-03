@@ -4,6 +4,7 @@ import axios from 'axios';
 import { CONTRACT_ADDRESS, CONTRACT_ABI, TOKEN_ADDRESS, TOKEN_ABI } from '../../utils/constants'
 import { useWeb3ModalProvider, useWeb3ModalAccount } from '@web3modal/ethers/react'
 import { URL } from '../../utils/constants';
+import { toast } from 'react-toastify';
 
 const Section2 = () => {
     const [upgraded_plan, setUpgraded_plan] = useState([]);
@@ -41,7 +42,9 @@ const Section2 = () => {
 
             axios.post(`${URL}/deposit`, formData)
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
+                    toast.success(response.data.msg);
+                    upackages();
                 })
                 .catch((error) => {
                 console.log(error);
