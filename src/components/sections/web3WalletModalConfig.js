@@ -25,10 +25,10 @@ const mainnet = {
 
 // 3. Create a metadata object
 const metadata = {
-  name: 'My Website',
-  description: 'My Website description',
-  url: 'https://mywebsite.com', // origin must match your domain & subdomain
-  icons: ['https://avatars.mywebsite.com/']
+  name: 'XRPL',
+  description: 'XRPL TEAM',
+  url: 'https://xrpl.team', // origin must match your domain & subdomain
+  icons: ['https://app.xrpl.team/favicon.ico']
 }
 
 // 4. Create Ethers config
